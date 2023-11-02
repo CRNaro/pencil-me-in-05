@@ -30,16 +30,21 @@
       <p class="lead">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
     </header>
-    <div id='calendar' class="container-fluid px-5">
-      <!-- Use class for "past", "present", and "future" to apply styles to the
+    <div id='time-blocks' class="container-fluid px-5"
+    class='past' class='present' class='future' >
+      <!-- Each time-block row below should be dynamically created using javascript
+        and should include the following:
+        - An hour section
+        - A textarea to hold the user's input
+        - A save button -->
+      <!--Use class for "past", "present", and "future" to apply styles to the
         time-block divs accordingly. The javascript will need to do this by
         adding/removing these classes on each div by comparing the hour in the
         id to the current hour. The html provided below is meant to be an example
         demonstrating how the css provided can be leveraged to create the
         desired layout and colors. The html below should be removed or updated
         in the finished product. Remember to delete this comment once the
-        code is implemented.
-        -->
+        code is implemented.-->
 
       <!-- Example of a past time block. The "past" class adds a gray background color. -->
       <div id="hour-9" class="row time-block past">

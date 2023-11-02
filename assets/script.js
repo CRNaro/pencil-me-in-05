@@ -2,6 +2,7 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
+
 $(document).ready(function () {
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
@@ -9,8 +10,23 @@ $(document).ready(function () {
   // function? How can DOM traversal be used to get the "hour-x" id of the
   // time-block containing the button that was clicked? How might the id be
   // useful when saving the description in local storage?
-  //
-  $('.saveBtn').on('click', function () { 
+      let timeBlocks = ['12AM', '1AM', '2AM', '3AM', '4AM', '5AM',
+      '6AM', '7AM', '8AM', '9AM', '10AM', '11AM', '12PM','1PM', 
+      '2PM', '3PM', '4PM', '5PM', '6PM', '7PM', '8PM', '9PM', 
+      '10PM', '11PM'];
+  
+  
+      timeBlocks.forEach(function(time) {
+    let timeBlocks = $('<div>').addClass('time-block row').attr('id', time)
+    let timeLabel = $('<div>').addClass('hour col-md-1').text(time)
+    let textArea = $('<textarea>').addClass('description col-md-10')
+    let saveBtn = $('<button>').addClass('saveBtn col-md-1').html('<i class="fas fa-save"></i>')
+  
+    timeBlocks.append(timeLabel, textArea, saveBtn)
+    $('.container').append(timeBlocks)
+  })
+
+      $('.saveBtn').on('click', function () { 
     // 'this' references the save button
     const text = $(this).siblings('.description').val()
     const time = $(this).parent().attr('id')
