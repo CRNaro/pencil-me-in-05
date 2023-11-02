@@ -23,7 +23,7 @@ $(document).ready(function () {
     let saveBtn = $('<button>').addClass('saveBtn col-md-1').html('<i class="fas fa-save"></i>')
   
     timeBlocks.append(timeLabel, textArea, saveBtn)
-    $('.container').append(timeBlocks)
+    $('#time-blocks').append(timeBlocks)
   })
 
       $('.saveBtn').on('click', function () { 
