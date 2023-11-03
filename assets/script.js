@@ -32,8 +32,32 @@ $(document).ready(function () {
     const time = $(this).parent().attr('id')
     localStorage.setItem(time, text);
   });
- 
+//const blockHour = localStorage.getItem('time-blocks'); thought i needed to define blockHour
+function timeTracker() {
 
+  let currentHour = dayjs().hour();
+  //console.log(currentHour);
+    $('.time-block').each(function() {          
+    let blockHour = parseInt($(this).attr('id').split('-')[1]); 
+    console.log(blockHour);
+      // removes all old color classes
+      //$(this).removeClass('bg-secondary bg-danger bg-success')
+      // note for 11-3 - changed the if statement for color changes
+      // !!!!all time is green!!!  fix this
+      if (blockHour < currentHour) {
+        $(this).addClass('bg-secondary'); 
+      } else if  (blockHour === currentHour) { 
+        $(this).removeClass('bg-secondary');
+        $(this).addClass('bg-danger');
+      } else {
+        $(this).removeClass('bg-secondary');
+        $(this).removeClass('bg-danger');
+        $(this).addClass('bg-success');
+          }
+        });
+      }
+ timeTracker();
+ 
   // TODO: Add code to apply the past, present, or future class to each time
   // block by comparing the id to the current hour. HINTS: How can the id
   // attribute of each time-block be used to conditionally add or remove the
@@ -47,5 +71,5 @@ $(document).ready(function () {
   //
   // displaying the current date in the header of the page.
   const todaysDate = dayjs()
-$('#currentDay').text(todaysDate.format('dddd, MMMM D, YYYY'))
+$('#currentDay').text(todaysDate.format('dddd, MMMM D, YYYY h:mm A'))
 });
