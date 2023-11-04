@@ -19,13 +19,13 @@ $(document).ready(function () {
       // Save button event handler
       $('.saveBtn').on('click', function () { 
     const text = $(this).siblings('.description').val()
-    const time = $(this).parent().attr('id')
+    const time = $(this).closest('.time-block').attr('id')
 
     // Save text in local storage
     localStorage.setItem(time, text);
   });
 //const blockHour = localStorage.getItem('time-blocks'); thought i needed to define blockHour
-$('time-block').each(function() {
+$('.time-block').each(function() {
   let time = $(this).attr('id');
   let text = localStorage.getItem(time);
   $(this).find('.description').val(text);
@@ -48,7 +48,7 @@ function timeTracker() {
       
       // Convert 12 hour to 24 hour format
       function convertTo24HourFormat(time) {
-        let [hour, period] = time.split(/(?<=\d)(?=[a-zA-Z])/);
+        let [hour, period] = time.split(/(?<=\d)(?=[a-zA-Z])/); // need to change this to a regex?
         hour = parseInt(hour);
         if (isNaN(hour)) {
           return NaN;
